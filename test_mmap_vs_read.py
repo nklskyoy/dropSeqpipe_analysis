@@ -16,7 +16,7 @@ reads_read = []
 time_seqio = []
 
 
-TOT_READS = 10**3
+TOT_READS = 10**4
 
 def _read(file,n_reads):
     ctr = 0
@@ -27,7 +27,7 @@ def _read(file,n_reads):
 
 gz = gzip.open(sys.argv[1],"r")
 
-for i in range(TOT_READS):
+for i in range(4*TOT_READS):
     t = timeit.Timer(functools.partial(_read,gz,i)).timeit(1)
     time_read.append(t)
     reads_read.append(i)
@@ -37,7 +37,7 @@ print("finished benchmarking 1")
 mfd = os.open(sys.argv[1], os.O_RDONLY)
 mfile = mmap.mmap(mfd, 0, prot=mmap.PROT_READ)
 
-for i in range(4* 5* 10*2):
+for i in range(4*TOT_READS):
     t = timeit.Timer(functools.partial(_read,mfile,i)).timeit(1)
     time_mmap.append(t)
     reads_mmap.append(i)
@@ -45,6 +45,6 @@ for i in range(4* 5* 10*2):
 print(time_read)
 print(time_mmap)
 
-plt.plot(reads_mmap,time_mmap)
-plt.plot(reads_read,time_read)
+plt.plot(reads_mmap,time_mmap,'.')
+plt.plot(reads_read,time_read,'.')
 plt.savefig("mmapvsread.png")
