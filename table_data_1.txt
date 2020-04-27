@@ -1,5 +1,5 @@
 HBP_Ape_266_CN	
-916M	total	
+0.916G	total
 1.1G	total
 
 HBP_Ape_266_Putamen	
@@ -7,8 +7,8 @@ HBP_Ape_266_Putamen
 6.2G	total
 
 HBP_Ape_266_SN	
-129M	total	
-147M	total
+0.129G	total
+0.147G	total
 
 HBP_Ape_267_CN	
 2.6G	total	
@@ -19,7 +19,7 @@ HBP_Ape_267_Putamen
 5.7G	total
 
 HBP_Ape_268_CN	
-840M	total	
+0.840G	total
 1.1G	total
 
 HBP_Ape_268_Putamen	

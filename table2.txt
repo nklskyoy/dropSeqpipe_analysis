@@ -3,14 +3,14 @@
 2.9G	total
 
 253_S2	
-1000M	total	
+1G	total
 2.8G	total
 
 254_S3	
-818M	total	
+0.818G	total
 2.2G	total
 
 255_S4	
-715M	total	
+0.715G	total
 2.0G	total
 

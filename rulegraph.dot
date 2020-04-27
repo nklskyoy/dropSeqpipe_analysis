@@ -1,0 +1,113 @@
+digraph snakemake_dag {
+    graph[bgcolor=white, margin=0];
+    node[shape=circle, style=filled, fontname=sans,                 fontsize=10, penwidth=2];
+    edge[penwidth=2, color=grey];
+        0[label = "all", color = "0.15 0.6 0.85", style="rounded"];
+        1[label = "convert_long_to_mtx", fillcolor=red];
+        2[label = "plot_rna_metrics", color = "0.10 0.6 0.85", style="rounded"];
+        3[label = "violine_plots", color = "0.34 0.6 0.85", style="rounded"];
+        4[label = "plot_knee_plot", color = "0.31 0.6 0.85", style="rounded"];
+        5[label = "create_star_index", color = "0.04 0.6 0.85", style="rounded"];
+        6[label = "merge_long", color = "0.20 0.6 0.85", style="rounded"];
+        7[label = "multiqc_cutadapt_barcodes", color = "0.03 0.6 0.85", style="rounded"];
+        8[label = "multiqc_fastqc_reads", color = "0.47 0.6 0.85", style="rounded"];
+        9[label = "multiqc_fastqc_barcodes", color = "0.08 0.6 0.85", style="rounded"];
+        10[label = "plot_yield", color = "0.52 0.6 0.85", style="rounded"];
+        11[label = "multiqc_star", color = "0.37 0.6 0.85", style="rounded"];
+        12[label = "plot_adapter_content", color = "0.65 0.6 0.85", style="rounded"];
+        13[label = "multiqc_cutadapt_RNA", color = "0.46 0.6 0.85", style="rounded"];
+        14[label = "extract_umi_expression", color = "0.61 0.6 0.85", style="rounded"];
+        15[label = "get_cell_whitelist", color = "0.40 0.6 0.85", style="rounded"];
+        16[label = "SingleCellRnaSeqMetricsCollector", color = "0.18 0.6 0.85", style="rounded"];
+        17[label = "bam_hist", color = "0.24 0.6 0.85", style="rounded"];
+        18[label = "extract_reads_expression", color = "0.41 0.6 0.85", style="rounded"];
+        19[label = "download_genome", color = "0.14 0.6 0.85", style="rounded"];
+        20[label = "curate_annotation", color = "0.42 0.6 0.85", style="rounded"];
+        21[label = "cutadapt_R1", color = "0.09 0.6 0.85", style="rounded"];
+        22[label = "fastqc_reads", color = "0.51 0.6 0.85", style="rounded"];
+        23[label = "fastqc_barcodes", color = "0.35 0.6 0.85", style="rounded"];
+        24[label = "cutadapt_R2", color = "0.66 0.6 0.85", style="rounded"];
+        25[label = "repair", color = "0.54 0.6 0.85", style="rounded"];
+        26[label = "STAR_align", color = "0.63 0.6 0.85", style="rounded"];
+        27[label = "clean_cutadapt", color = "0.29 0.6 0.85", style="rounded"];
+        28[label = "bead_errors_metrics", color = "0.05 0.6 0.85", style="rounded"];
+        29[label = "get_top_barcodes", color = "0.56 0.6 0.85", style="rounded"];
+        30[label = "create_refFlat", color = "0.25 0.6 0.85", style="rounded"];
+        31[label = "create_intervals", color = "0.19 0.6 0.85", style="rounded"];
+        32[label = "download_annotation", color = "0.44 0.6 0.85", style="rounded"];
+        33[label = "DetectBeadSubstitutionErrors", color = "0.23 0.6 0.85", style="rounded"];
+        34[label = "create_dict", color = "0.27 0.6 0.85", style="rounded"];
+        35[label = "reduce_gtf", color = "0.53 0.6 0.85", style="rounded"];
+        36[label = "TagReadWithGeneExon", color = "0.43 0.6 0.85", style="rounded"];
+        37[label = "repair_barcodes", color = "0.28 0.6 0.85", style="rounded"];
+        38[label = "extend_barcode_top", color = "0.11 0.6 0.85", style="rounded"];
+        39[label = "MergeBamAlignment", color = "0.02 0.6 0.85", style="rounded"];
+        7 -> 0
+        10 -> 0
+        5 -> 0
+        1 -> 0
+        6 -> 0
+        11 -> 0
+        2 -> 0
+        9 -> 0
+        13 -> 0
+        12 -> 0
+        3 -> 0
+        8 -> 0
+        4 -> 0
+        14 -> 1
+        18 -> 1
+        16 -> 2
+        15 -> 2
+        6 -> 3
+        17 -> 4
+        15 -> 4
+        20 -> 5
+        19 -> 5
+        14 -> 6
+        18 -> 6
+        21 -> 7
+        22 -> 8
+        23 -> 9
+        26 -> 10
+        21 -> 10
+        25 -> 10
+        24 -> 10
+        26 -> 11
+        27 -> 12
+        24 -> 13
+        28 -> 14
+        15 -> 14
+        29 -> 15
+        30 -> 16
+        31 -> 16
+        28 -> 16
+        15 -> 16
+        28 -> 17
+        28 -> 18
+        15 -> 18
+        32 -> 20
+        21 -> 25
+        24 -> 25
+        5 -> 26
+        25 -> 26
+        21 -> 27
+        24 -> 27
+        33 -> 28
+        25 -> 29
+        20 -> 30
+        34 -> 30
+        35 -> 31
+        34 -> 31
+        36 -> 33
+        19 -> 34
+        20 -> 35
+        34 -> 35
+        30 -> 36
+        37 -> 36
+        38 -> 37
+        39 -> 37
+        29 -> 38
+        26 -> 39
+        25 -> 39
+}
