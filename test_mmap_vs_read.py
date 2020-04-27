@@ -16,7 +16,7 @@ reads_read = []
 time_seqio = []
 
 
-TOT_READS = 10**4
+TOT_READS = 10**3
 
 def _read(file,n_reads):
     ctr = 0
@@ -44,3 +44,7 @@ for i in range(4* 5* 10*2):
 
 print(time_read)
 print(time_mmap)
+
+plt.plot(reads_mmap,time_mmap)
+plt.plot(reads_read,time_read)
+plt.savefig("mmapvsread.png")
