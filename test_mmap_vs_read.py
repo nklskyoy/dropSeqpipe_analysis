@@ -24,7 +24,7 @@ def _read(file,n_reads):
 
 gz = gzip.open(sys.argv[1],"r")
 
-for i in range(4* 10*5):
+for i in range(4* 10*3):
     t = timeit.Timer(functools.partial(_read,gz,i)).timeit(1)
     time_read.append(t)
     reads_read.append(i)
@@ -32,7 +32,7 @@ for i in range(4* 10*5):
 mfd = os.open(sys.argv[1], os.O_RDONLY)
 mfile = mmap.mmap(mfd, 0, prot=mmap.PROT_READ)
 
-for i in range(4* 5* 10*4):
+for i in range(4* 5* 10*3):
     t = timeit.Timer(functools.partial(_read,mfd,i)).timeit(1)
     time_mmap.append(t)
     reads_mmap.append(i)
