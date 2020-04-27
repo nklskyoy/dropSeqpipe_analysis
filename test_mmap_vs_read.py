@@ -21,15 +21,15 @@ def _read(file,n_reads):
     while ctr < n_reads*4:
         file.readline()
 
-print(str(sys.argv)[1])
-gz = gzip.open(str(sys.argv)[1],"r")
+
+gz = gzip.open(sys.argv[1],"r")
 
 for i in range(4* 5* 10*6):
     t = timeit.Timer(functools.partial(_read,gz,i))
     time_read.append(t)
     reads_read.append(i)
 
-mfd = os.open('BigFile', os.O_RDONLY)
+mfd = os.open(sys.argv[1], os.O_RDONLY)
 mfile = mmap.mmap(mfd, 0, prot=mmap.PROT_READ)
 
 for i in range(4* 5* 10*4):
