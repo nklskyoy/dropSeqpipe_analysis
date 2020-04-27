@@ -19,8 +19,6 @@ time_seqio = []
 TOT_READS = 10**7
 
 def _read(file,n_reads):
-    print(file)
-    print(n_reads)
     ctr = 0
     while ctr < n_reads*4:
         file.readline()
