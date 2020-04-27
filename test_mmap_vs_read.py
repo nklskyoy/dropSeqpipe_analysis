@@ -20,6 +20,7 @@ def _read(file,n_reads):
     ctr = 0
     while ctr < n_reads*4:
         file.readline()
+        ctr+=1
 
 
 gz = gzip.open(sys.argv[1],"r")
