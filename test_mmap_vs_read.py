@@ -21,7 +21,7 @@ def _read(file,n_reads):
     while ctr < n_reads*4:
         file.readline()
 
-print(str(sys.argv))
+print(str(sys.argv)[1])
 gz = gzip.open(str(sys.argv)[1],"r")
 
 for i in range(4* 5* 10*6):
