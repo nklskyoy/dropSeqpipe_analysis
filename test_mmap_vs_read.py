@@ -24,7 +24,7 @@ def _read(file,n_reads):
 
 gz = gzip.open(sys.argv[1],"r")
 
-for i in range(4* 5* 10*6):
+for i in range(4* 10*5):
     t = timeit.Timer(functools.partial(_read,gz,i)).timeit(1)
     time_read.append(t)
     reads_read.append(i)
