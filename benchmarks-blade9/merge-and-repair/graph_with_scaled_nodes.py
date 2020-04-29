@@ -73,7 +73,6 @@ with open('rulegrph_scaled.dot',"w") as rulegraph_scaled:
                     width = MIN_WIDTH + (MAX_WIDTH - MIN_WIDTH)*scale_load
                     line_pre = line[:-3]
                     line_new = line_pre + ", width=\"" +  str(int(width)) + "\", fillcolor=\"" + color_rgb +"\"];\n"
-                    print("changed line \n")
                     rulegraph_scaled.write(line_new)
             if not found:
                 rulegraph_scaled.write(line)
