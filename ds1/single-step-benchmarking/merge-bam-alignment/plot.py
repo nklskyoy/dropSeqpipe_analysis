@@ -1,15 +1,30 @@
 import matplotlib.pyplot as plt
 import itertools
+from datetime import datetime, timedelta
 import os
 
 RULENAME = "MergeBamAlignment"
 SAMPLES = [["252_S1","253_S2"],["254_S3","255_S4"]]
+
 
 def read_sec_from_benchmark(benchmark_path):
     benchmark = open(benchmark_path,"r")
     header_line = benchmark.readline()
     benchmark_line = benchmark.readline()
     return float(benchmark_line.split("\t")[0])
+
+
+def autolabel(rects,ax):
+    """Attach a text label above each bar in *rects*, displaying its height."""
+    for rect in rects:
+        height = rect.get_height()
+        sec = timedelta(seconds=int(height))
+        ax.annotate('{}'.format(str(sec)),
+                    xy=(rect.get_x() + rect.get_width() / 2, height),
+                    xytext=(0, 3),  # 3 points vertical offset
+                    textcoords="offset points",
+                    fontSize=7,
+                    ha='center', va='bottom')
 
 
 path = os.getcwd()+"/"+os.path.dirname(__file__)+"original/"
@@ -35,10 +50,11 @@ row_ctr = 0
 for samples in SAMPLES:
     col_ctr = 0
     for sample in samples:
-        axs[row_ctr,col_ctr].bar(x,[b["252_S1"],b_star["252_S1"]],width=0.99)
+        rects = axs[row_ctr,col_ctr].bar(x,[b["252_S1"],b_star["252_S1"]],width=0.99)
         axs[row_ctr, col_ctr].set_xticks([0,1])
         axs[row_ctr, col_ctr].set_xticklabels(["Merge-\nBamAlignment", "Merge-\nBamAlignment*"], horizontalalignment="center",
                                   fontsize=7)
+        autolabel(rects,axs[row_ctr, col_ctr])
         col_ctr += 1
     row_ctr += 1
 
