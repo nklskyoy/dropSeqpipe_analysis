@@ -50,7 +50,7 @@ row_ctr = 0
 for samples in SAMPLES:
     col_ctr = 0
     for sample in samples:
-        rects = axs[row_ctr,col_ctr].bar(x,[b["252_S1"],b_star["252_S1"]],width=0.99)
+        rects = axs[row_ctr,col_ctr].bar(x,[b[sample],b_star[sample]],width=0.99)
         axs[row_ctr, col_ctr].set_xticks([0,1])
         axs[row_ctr, col_ctr].set_xticklabels(["TagRead-\nWithGeneExon", "TagRead-\nWithGeneExon*"], horizontalalignment="center",
                                   fontsize=7)

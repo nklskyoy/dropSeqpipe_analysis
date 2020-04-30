@@ -42,7 +42,7 @@ for sample in list(itertools.chain.from_iterable(SAMPLES)):
 
 plt.style.use('ggplot')
 
-fig,axs = plt.subplots(2,2)
+fig,axs = plt.subplots(3,2)
 
 x = [0,1]
 
@@ -50,7 +50,7 @@ row_ctr = 0
 for samples in SAMPLES:
     col_ctr = 0
     for sample in samples:
-        rects = axs[row_ctr,col_ctr].bar(x,[b["252_S1"],b_star["252_S1"]],width=0.99)
+        rects = axs[row_ctr,col_ctr].bar(x,[b[sample],b_star[sample]],width=0.99)
         axs[row_ctr, col_ctr].set_xticks([0,1])
         axs[row_ctr, col_ctr].set_xticklabels(["get_top-\nbarcodes", "get_top-\nbarcodes*"], horizontalalignment="center",
                                   fontsize=7)
