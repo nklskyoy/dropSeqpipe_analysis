@@ -1,126 +1,53 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-import numpy as np
+import os
+
+plt.style.use('ggplot')
 
 
-#the big data set with 52-base barcodes
-table_1 = open("table_data_1.txt","r")
+def parse_table(table):
+    line1 = table.readline()
+    R1 = []
+    R2 = []
 
-#the "small" data set
-table_2 = open("table2.txt", "r")
+    while line1:
+        samplename = line1.split("\t")[0]
+        line2 = table.readline().split("\t")
+        size_R1 = float(line2[0].split("G")[0])
+        line3 = table.readline().split("\t")
+        size_R2 = float(line3[0].split("G")[0])
+        R1.append(size_R1)
+        R2.append(size_R2)
+        line4 = table.readline()   # empty line
+        line1 = table.readline()
 
-fig, (ax1, ax2) = plt.subplots(1,2)
-
-
-offset = 0.52
-width = 1
-step  =5
-i = step
-
-darkkhaki_patch = mpatches.Patch(color='darkkhaki', label='R1')
-lightseagreen_patch = mpatches.Patch(color="lightseagreen", label='R2')
-
-##############################################
-## table1
-##############################################
-
-x = []
-y = []
-colors = []
-tick_label = []
-x_tick = []
-
-sum_r1 =0
-sum_r2 = 0
-
-line1 = table_1.readline()
-
-while line1:
-    samplename = line1.split("\t")[0]
-    line2 = table_1.readline().split("\t")
-    size_R1 = float(line2[0].split("G")[0])
-    line3 = table_1.readline().split("\t")
-    size_R2 = float(line3[0].split("G")[0])
-
-    x.append(i-offset)
-    x.append(i+offset)
-    y.append(size_R1)
-    y.append(size_R2)
-    colors.append("darkkhaki")
-    colors.append("lightseagreen")
-    tick_label.append("")
-    line4 = table_1.readline()
-
-    sum_r1+=size_R1
-    sum_r2+=size_R2
-
-    line1 = table_1.readline()
-    x_tick.append(i)
-    i += step
-
-y_tick = [1,2,3,4,5,6,7]
-y_label = "size in gigabytes"
-
-print("rable1: sumR1:", sum_r1, "; sumR2:", sum_r2)
+    return R1,R2
 
 
-ax1.set_xticks(x_tick)
-ax1.set_xticklabels(tick_label,fontsize=7,rotation=90)
-ax1.set_ylabel(y_label)
-ax1.bar(x,y,width,color=colors)
-ax1.legend(handles=[darkkhaki_patch,lightseagreen_patch])
+path1 = os.getcwd()+"/"+os.path.dirname(__file__)+"ds1/samples.txt"
+path2 = os.getcwd()+"/"+os.path.dirname(__file__)+"ds2/samples.txt"
+
+table1 = open(path1,"r")
+table2 = open(path2, "r")
 
 
-##############################################
-## table2
-##############################################
+R1_1,R2_1 = parse_table(table1)
+R1_2,R2_2 = parse_table(table2)
 
+x = [R1_1,R2_1,R1_2,R2_2]
 
-x = []
-y = []
-colors = []
-tick_label = []
-x_tick = []
+fig,ax = plt.subplots(1,1)
 
-sum_r1 = 0
-sum_r2 = 0
+labels = ["D1.R1","D1.R2","D2.R1","D2.R2"]
 
-line1 = table_2.readline()
+bplot = ax.boxplot(x)
+plt.boxplot(x)
 
-while line1:
-    samplename = line1.split("\t")[0]
-    line2 = table_2.readline().split("\t")
-    size_R1 = float(line2[0].split("G")[0])
-    line3 = table_2.readline().split("\t")
-    size_R2 = float(line3[0].split("G")[0])
+ax.set_xticks([1,2,3,4])
+ax.set_xticklabels(labels)
 
-    x.append(i-offset)
-    x.append(i+offset)
-    y.append(size_R1)
-    y.append(size_R2)
-    colors.append("darkkhaki")
-    colors.append("lightseagreen")
-    tick_label.append("")
-    line4 = table_2.readline()
+ax.set(xlabel='', ylabel='size in GB')
 
-    sum_r1+=size_R1
-    sum_r2+=size_R2
-
-    line1 = table_2.readline()
-    x_tick.append(i)
-    i += step
-
-y_tick = [1,2,3,4,5,6,7]
-y_label = "size in gigabytes"
-
-
-ax2.set_xticks(x_tick)
-ax2.set_xticklabels(tick_label,fontsize=7,rotation=90)
-ax2.bar(x,y,width,color=colors)
-ax2.legend(handles=[darkkhaki_patch,lightseagreen_patch])
-
-print("Table2: sumR1:", sum_r1, "; sumR2:", sum_r2)
-
-
-#plt.xticlabels(tick_label)
 plt.show()
+
+
