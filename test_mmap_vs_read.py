@@ -16,7 +16,7 @@ reads_read = []
 time_seqio = []
 reads_seqio = []
 
-TOT_READS = 10**5
+TOT_READS = 10**4
 
 def _read(file,n_reads):
     ctr = 0
