@@ -3,8 +3,8 @@ import itertools
 from datetime import datetime, timedelta
 import os
 
-RULENAME = "get_top_barcodes"
-SAMPLES = [["HBP_Ape_266_CN","HBP_Ape_266_Putamen"],["HBP_Ape_266_SN","HBP_Ape_267_CN"],["HBP_Ape_268_CN","HBP_Ape_268_Putamen"]]
+RULENAME = "TagReadWithGeneExon"
+SAMPLES = [["252_S1","253_S2"],["254_S3","255_S4"]]
 
 
 def read_sec_from_benchmark(benchmark_path):
@@ -52,7 +52,7 @@ for samples in SAMPLES:
     for sample in samples:
         rects = axs[row_ctr,col_ctr].bar(x,[b["252_S1"],b_star["252_S1"]],width=0.99)
         axs[row_ctr, col_ctr].set_xticks([0,1])
-        axs[row_ctr, col_ctr].set_xticklabels(["get_top-\nbarcodes", "get_top-\nbarcodes*"], horizontalalignment="center",
+        axs[row_ctr, col_ctr].set_xticklabels(["TagRead-\nWithGeneExon", "TagRead-\nWithGeneExon*"], horizontalalignment="center",
                                   fontsize=7)
         autolabel(rects,axs[row_ctr, col_ctr])
         col_ctr += 1
