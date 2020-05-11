@@ -52,7 +52,7 @@ for samples in SAMPLES:
     for sample in samples:
         rects = axs[row_ctr,col_ctr].bar(x,[b[sample],b_star[sample]],width=0.99)
         axs[row_ctr, col_ctr].set_xticks([0,1])
-        axs[row_ctr, col_ctr].set_xticklabels(["Merge-\nBamAlignment", "Merge-\nBamAlignment*"], horizontalalignment="center",
+        axs[row_ctr, col_ctr].set_xticklabels(["get_top_-\nbarcodes*", "get_top_-\nbarcodes"], horizontalalignment="center",
                                   fontsize=7)
         autolabel(rects,axs[row_ctr, col_ctr])
         col_ctr += 1
